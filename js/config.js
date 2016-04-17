@@ -3,10 +3,10 @@ $(function() {
   CMS.init({
 
     // Name of your site or location of logo file, relative to root directory (img/logo.png)
-    siteName: 'Nuzulul',
+    siteName: 'Nuzulul Official Site',
 
     // Tagline for your site
-    siteTagline: 'Bismillahirrahmanirrahim',
+    siteTagline: 'Tutorial, artikel, pengalaman, curhatan',
 
     // Email address
     siteEmail: 'nuzulz at gmail dot com',
@@ -45,7 +45,7 @@ $(function() {
     fadeSpeed: 300,
 
     // Site footer text
-    footerText: 'Nuzulul &copy; ' + new Date().getFullYear() + ' All Rights Reserved.',
+    footerText: 'Nuzulul Zulkarnain Haq &copy; ' + new Date().getFullYear() + ' All Rights Reserved.',
 
     // Mode 'Github' for Github Pages, 'Server' for Self Hosted. Defaults
     // to Github
