@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Welcome Home
+title: Info Penting
 ---
 
 Assalamualaikum. Wr. Wb.
