@@ -3,8 +3,4 @@ layout: post
 title: Welcome Home
 ---
 
-Assalamualaikum. Wr. Wb.
-
-Bismillahirrahmanirrahim.
-
-Terima kasih banyak atas kunjungannya.
+Assalamualaikum Bismillahirrahmanirrahim Terima kasih banyak atas kunjungannya.
