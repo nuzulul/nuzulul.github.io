@@ -1,6 +1,8 @@
 <html>
 <head>
 <script>
+
+
 function loadurl(data) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -15,6 +17,25 @@ function loadurl(data) {
 function loadreboot() {
   loadurl('reboot');
   setTimeout(function () { loadurl('https://suaramuslim.net'); }, 10000);
+}
+
+function getraspiip() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log(this.responseText);
+      jsonObject = JSON.parse(this.responseText);
+      document.getElementById('demo').innerHTML = jsonObject.isi;
+    }
+    };
+    xhttp.open("GET", "http://rtool.sourceforge.net/api.php/data/9", true);
+    xhttp.send();
+}
+
+function openurl(data) {
+    if (data=='omv') {var url='';}
+    if (data=='kod') {var url='/app/KodExplorer/';}
+    var win = window.open('http://'+document.getElementById('demo').innerHTML+url, '_blank');
 }
 
 </script>
@@ -32,12 +53,18 @@ button {display:block;margin:15px;}
 <button type="button" onclick="loadurl('file:///home/pi/Music/audio.html?mp3=asmaulhusna.mp3')">ASMAUL HUSNA</button>
 <button type="button" onclick="loadurl('file:///home/pi/Music/audio.html?mp3=juz30.mp3')">JUZ 30</button>
 <button type="button" onclick="loadurl('file:///home/pi/Public/audio.html?mp3=dentinghatikeinsyafan.mp3')">Keinsyafan</button>
+
 </br>
 <button type="button" onclick="loadurl('amixer set PCM -- 100%')">VOLUME 100</button>
 <button type="button" onclick="loadurl('amixer set PCM -- 95%')">VOLUME 95</button>
 <button type="button" onclick="loadurl('amixer set PCM -- 90%')">VOLUME 90</button>
 <button type="button" onclick="loadurl('amixer set PCM -- 85%')">VOLUME 85</button>
 <button type="button" onclick="loadurl('amixer set PCM -- 0%')">VOLUME 0</button>
+</br>
+<button type="button" onclick="loadurl('updateip')">UPDATE IP</button>
+<button type="button" onclick="getraspiip()">GET IP</button>
+<button type="button" onclick="openurl('omv')">OPEN OMV</button>
+<button type="button" onclick="openurl('kod')">OPEN KodExplorer</button>
 </br>
 <button type="button" onclick="loadurl('close')">CLOSE</button>
 <button type="button" onclick="loadreboot()">REBOOT</button>
