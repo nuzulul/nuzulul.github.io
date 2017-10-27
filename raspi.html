@@ -4,6 +4,7 @@
 
 
 function loadurl(data) {
+  document.getElementById("demo").innerHTML = ' ';
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -16,7 +17,7 @@ function loadurl(data) {
 
 function loadreboot() {
   loadurl('reboot');
-  setTimeout(function () { loadurl('https://suaramuslim.net'); }, 10000);
+  setTimeout(function () { loadurl('file:///home/pi/Public/audio.html?mp3=asmaulhusna.mp3'); }, 10000);
 }
 
 function getraspiip() {
@@ -28,13 +29,14 @@ function getraspiip() {
       document.getElementById('demo').innerHTML = jsonObject.isi;
     }
     };
-    xhttp.open("GET", "http://rtool.sourceforge.net/api.php/data/9", true);
+    xhttp.open("GET", "http://rtool.sourceforge.net/api.php/data/9?date=" + new Date().getTime(), true);
     xhttp.send();
 }
 
 function openurl(data) {
     if (data=='omv') {var url='';}
     if (data=='kod') {var url='/app/KodExplorer/';}
+    if (data=='admin') {var url='/app/admin.php';}
     var win = window.open('http://'+document.getElementById('demo').innerHTML+url, '_blank');
 }
 
@@ -47,12 +49,13 @@ button {display:block;margin:15px;}
 <body>
 <center>
 <h1>RADIO ONLINE</h1>
-<p id="demo"></p>
+<p id="demo"> </p>
 <button type="button" onclick="loadurl('https://suaramuslim.net')">SUARA MUSLIM</button>
 <button type="button" onclick="loadurl('https://tunein.com/radio/Radio-MQFM-1027-s123926/')">MQ FM</button>
-<button type="button" onclick="loadurl('file:///home/pi/Music/audio.html?mp3=asmaulhusna.mp3')">ASMAUL HUSNA</button>
-<button type="button" onclick="loadurl('file:///home/pi/Music/audio.html?mp3=juz30.mp3')">JUZ 30</button>
+<button type="button" onclick="loadurl('file:///home/pi/Public/audio.html?mp3=asmaulhusna.mp3')">ASMAUL HUSNA</button>
+<button type="button" onclick="loadurl('file:///home/pi/Public/audio.html?mp3=juz30.mp3')">JUZ 30</button>
 <button type="button" onclick="loadurl('file:///home/pi/Public/audio.html?mp3=dentinghatikeinsyafan.mp3')">Keinsyafan</button>
+<button type="button" onclick="loadurl('file:///home/pi/Public/audio.html?mp3=Maher Zain - Number One For Me  Official Music Video.mp3')">Number One For Me</button>
 
 </br>
 <button type="button" onclick="loadurl('amixer set PCM -- 100%')">VOLUME 100</button>
@@ -61,10 +64,12 @@ button {display:block;margin:15px;}
 <button type="button" onclick="loadurl('amixer set PCM -- 85%')">VOLUME 85</button>
 <button type="button" onclick="loadurl('amixer set PCM -- 0%')">VOLUME 0</button>
 </br>
-<button type="button" onclick="loadurl('updateip')">UPDATE IP</button>
+<button type="button" onclick="loadurl('updateipeth0')">UPDATE IP eth0</button>
+<button type="button" onclick="loadurl('updateipwlan0')">UPDATE IP wlan0</button>
 <button type="button" onclick="getraspiip()">GET IP</button>
 <button type="button" onclick="openurl('omv')">OPEN OMV</button>
 <button type="button" onclick="openurl('kod')">OPEN KodExplorer</button>
+<button type="button" onclick="openurl('admin')">OPEN Admin</button>
 </br>
 <button type="button" onclick="loadurl('close')">CLOSE</button>
 <button type="button" onclick="loadreboot()">REBOOT</button>
