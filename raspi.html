@@ -4,12 +4,16 @@
 
 
 function loadurl(data) {
+  document.getElementById("loader").style.display = "block";
+  document.getElementById("myDiv").style.display = "none";
   data = encodeURIComponent(data);
   document.getElementById("demo").innerHTML = '-';
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("demo").innerHTML = this.responseText;
+        document.getElementById("loader").style.display = "none";
+      document.getElementById("myDiv").style.display = "block";
     }
   };
   xhttp.open("PUT", "http://rtool.sourceforge.net/api.php/data/6", true);
@@ -17,17 +21,23 @@ function loadurl(data) {
 }
 
 function loadreboot() {
+  document.getElementById("overlay").style.display = "block";
   loadurl('reboot');
-  setTimeout(function () { loadurl('file:///home/pi/Public/audio.html?mp3=asmaulhusna.mp3'); }, 10000);
+  setTimeout(function () { loadurl('file:///home/pi/Public/audio.html?mp3=asmaulhusna.mp3'); document.getElementById("overlay").style.display = "none";}, 10000);
+  
 }
 
 function getraspiip() {
+    document.getElementById("loader").style.display = "block";
+    document.getElementById("myDiv").style.display = "none";
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       console.log(this.responseText);
       jsonObject = JSON.parse(this.responseText);
       document.getElementById('demo').innerHTML = jsonObject.isi;
+        document.getElementById("loader").style.display = "none";
+      document.getElementById("myDiv").style.display = "block";
     }
     };
     xhttp.open("GET", "http://rtool.sourceforge.net/api.php/data/9?date=" + new Date().getTime(), true);
@@ -45,9 +55,90 @@ function openurl(data) {
 </script>
 <style>
 button {display:block;margin:15px;width:300px;height:50px;}
+
+#overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+}
+
+#text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
+
+/* Center the loader */
+#loader {
+  display:none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+#myDiv {
+  display: block;
+}
 </style>
 </head>
 <body>
+<div id="overlay">
+  <div id="text">Reboot ...</div>
+</div>
+<div id="loader"></div>
+<div id="myDiv">
 <center>
 <h1>RADIO ONLINE</h1>
 <p id="demo">-</p>
@@ -57,7 +148,8 @@ button {display:block;margin:15px;width:300px;height:50px;}
 <button type="button" onclick="loadurl('file:///home/pi/Public/audio.html?mp3=juz30.mp3')">JUZ 30</button>
 <button type="button" onclick="loadurl('file:///home/pi/Public/audio.html?mp3=dentinghatikeinsyafan.mp3')">Keinsyafan</button>
 <button type="button" onclick="loadurl('file:///home/pi/Public/audio.html?mp3=Maher Zain - Number One For Me  Official Music Video.mp3')">Number One For Me</button>
-<button type="button" onclick="loadurl('file:///home/pi/Public/youtube.html?list=PLTI7UXFLKAw3XG8RkZbSTzJaB6P3x-pAn&count=69')">Maher Zain All</button>
+<button type="button" onclick="loadurl('https://www.youtube.com/watch?v=gnZjSui_Mc4')">Maher Zain</button>
+<button type="button" onclick="loadurl('file:///home/pi/Public/youtube.html?list=PLTI7UXFLKAw3XG8RkZbSTzJaB6P3x-pAn&count=69')">Maher Zain Random</button>
 <button type="button" onclick="loadurl('file:///home/pi/Public/youtube.html?list=PLxUu86mhDLLnDy7wPH-DGlGq_ewOLvu1G&count=1')">Muzammil Juz 30</button>
 </br>
 <button type="button" onclick="loadurl('amixer set PCM -- 100%')">VOLUME 100</button>
@@ -79,7 +171,9 @@ button {display:block;margin:15px;width:300px;height:50px;}
 </br>
 
 <button type="button" onclick="loadreboot()">REBOOT</button>
+
 </center>
+</div>
 </body>
 </html>
 
