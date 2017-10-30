@@ -1,5 +1,6 @@
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
 <script>
 
 
@@ -52,9 +53,100 @@ function openurl(data) {
     var win = window.open('http://'+document.getElementById('demo').innerHTML+url, '_blank');
 }
 
+// tabs
+
+window.addEventListener("load", function() {
+			makeTabs(".tabs")
+});
+
+function makeTabs(selector) {
+
+    tab_lists_anchors = document.querySelectorAll(selector + " li a");
+    divs = document.querySelector(selector).getElementsByTagName("div");
+    for (var i = 0; i < tab_lists_anchors.length; i++) {
+        if (tab_lists_anchors[i].classList.contains('active')) {
+            divs[i].style.display = "block";
+        }
+
+    }
+
+    for (i = 0; i < tab_lists_anchors.length; i++) {
+
+        document.querySelectorAll(".tabs li a")[i].addEventListener('click', function(e) {
+
+            for (i = 0; i < divs.length; i++) {
+                divs[i].style.display = "none";
+            }
+
+            for (i = 0; i < tab_lists_anchors.length; i++) {
+                tab_lists_anchors[i].classList.remove("active");
+            }
+
+            clicked_tab = e.target || e.srcElement;
+
+            clicked_tab.classList.add('active');
+            div_to_show = clicked_tab.getAttribute('href');
+
+            document.querySelector(div_to_show).style.display = "block";
+
+        });
+    }
+
+}
 </script>
+
 <style>
 button {display:block;margin:15px;width:300px;height:50px;}
+
+/* tabs */
+
+.tabs{
+  overflow:hidden;
+  clear:both;
+
+}
+.tabs ul{
+  list-style-type:none;
+  bottom: -1px;
+  position:fixed;
+  margin:0 0 0 0;
+  background:#000;
+  width:100%;
+  padding-top:5px;
+  align:center;
+}
+
+.tabs li{
+  float:left;
+}
+
+.tabs a{
+  display:block;
+  padding:5px 10px;
+  background-color: #EEE;
+  color: #000;
+  text-decoration: none;
+  margin: 0 4px;
+  border-top:1px solid #CCC;
+  border-left:1px solid #DDD;
+  border-right:1px solid #DDD;
+  font:13px/18px verdana,arial,sans-serif;
+  border-bottom:1px solid #CCC;
+}
+.tabs a.active{
+  background-color: #fff;
+  border-bottom:1px solid #fff;
+}
+.tabs div{
+  clear: both;
+  border:1px solid #CCC;
+  padding:5px 5px 20px 5px;
+  font-family:verdana;
+  font-size:13px;
+  background-color: #fff;
+  display:none;
+}
+/*overlay*/
 
 #overlay {
     position: fixed;
@@ -140,40 +232,58 @@ button {display:block;margin:15px;width:300px;height:50px;}
 <div id="loader"></div>
 <div id="myDiv">
 <center>
-<h1>RADIO ONLINE</h1>
+<h1>REMOTE</h1>
 <p id="demo">-</p>
-<button type="button" onclick="loadurl('https://suaramuslim.net')">SUARA MUSLIM</button>
-<button type="button" onclick="loadurl('https://tunein.com/radio/Radio-MQFM-1027-s123926/')">MQ FM</button>
-<button type="button" onclick="loadurl('file:///home/pi/Public/audio.html?mp3=asmaulhusna.mp3')">ASMAUL HUSNA</button>
-<button type="button" onclick="loadurl('file:///home/pi/Public/audio.html?mp3=juz30.mp3')">JUZ 30</button>
-<button type="button" onclick="loadurl('file:///home/pi/Public/audio.html?mp3=dentinghatikeinsyafan.mp3')">Keinsyafan</button>
-<button type="button" onclick="loadurl('file:///home/pi/Public/audio.html?mp3=Maher Zain - Number One For Me  Official Music Video.mp3')">Number One For Me</button>
-<button type="button" onclick="loadurl('https://www.youtube.com/watch?v=gnZjSui_Mc4')">Maher Zain</button>
-<button type="button" onclick="loadurl('file:///home/pi/Public/youtube.html?list=PLTI7UXFLKAw3XG8RkZbSTzJaB6P3x-pAn&count=69')">Maher Zain Random</button>
-<button type="button" onclick="loadurl('file:///home/pi/Public/youtube.html?list=PLxUu86mhDLLnDy7wPH-DGlGq_ewOLvu1G&count=1')">Muzammil Juz 30</button>
-</br>
-<button type="button" onclick="loadurl('amixer set PCM -- 100%')">VOLUME 100</button>
-<button type="button" onclick="loadurl('amixer set PCM -- 95%')">VOLUME 95</button>
-<button type="button" onclick="loadurl('amixer set PCM -- 90%')">VOLUME 90</button>
-<button type="button" onclick="loadurl('amixer set PCM -- 85%')">VOLUME 85</button>
-<button type="button" onclick="loadurl('amixer set PCM -- 0%')">VOLUME 0</button>
-</br>
-<button type="button" onclick="loadurl('close')">CLOSE BROWSER</button>
-<button type="button" onclick="loadurl('updateipeth0')">UPDATE IP eth0</button>
-<button type="button" onclick="loadurl('updateipwlan0')">UPDATE IP wlan0</button>
 
-</br>
-<button type="button" onclick="getraspiip()">GET IP</button>
-<button type="button" onclick="openurl('omv')">OPEN OMV</button>
-<button type="button" onclick="openurl('kod')">OPEN KodExplorer</button>
-<button type="button" onclick="openurl('admin')">OPEN Admin</button>
-<button type="button" onclick="openurl('kodi')">OPEN Kodi</button>
-</br>
+<div class="tabs">
 
-<button type="button" onclick="loadreboot()">REBOOT</button>
+			<div id="tab1">
+				
+        <button type="button" onclick="loadurl('https://suaramuslim.net')">SUARA MUSLIM</button>
+        <button type="button" onclick="loadurl('https://tunein.com/radio/Radio-MQFM-1027-s123926/')">MQ FM</button>
+        <button type="button" onclick="loadurl('file:///home/pi/Public/audio.html?mp3=asmaulhusna.mp3')">ASMAUL HUSNA</button>
+        <button type="button" onclick="loadurl('file:///home/pi/Public/audio.html?mp3=juz30.mp3')">JUZ 30</button>
+        <button type="button" onclick="loadurl('file:///home/pi/Public/audio.html?mp3=dentinghatikeinsyafan.mp3')">Keinsyafan</button>
+        <button type="button" onclick="loadurl('file:///home/pi/Public/audio.html?mp3=Maher Zain - Number One For Me  Official Music Video.mp3')">Number One For Me</button>
+        <button type="button" onclick="loadurl('https://www.youtube.com/watch?v=gnZjSui_Mc4')">Maher Zain</button>
+        <button type="button" onclick="loadurl('file:///home/pi/Public/youtube.html?list=PLTI7UXFLKAw3XG8RkZbSTzJaB6P3x-pAn&count=69')">Maher Zain Random</button>
+        <button type="button" onclick="loadurl('file:///home/pi/Public/youtube.html?list=PLxUu86mhDLLnDy7wPH-DGlGq_ewOLvu1G&count=1')">Muzammil Juz 30</button>
+			</div>
+			
+			<div id="tab2">
+				
+        <button type="button" onclick="loadurl('amixer set PCM -- 100%')">VOLUME 100</button>
+        <button type="button" onclick="loadurl('amixer set PCM -- 95%')">VOLUME 95</button>
+        <button type="button" onclick="loadurl('amixer set PCM -- 90%')">VOLUME 90</button>
+        <button type="button" onclick="loadurl('amixer set PCM -- 85%')">VOLUME 85</button>
+        <button type="button" onclick="loadurl('amixer set PCM -- 0%')">VOLUME 0</button>
+			</div>
+			
+			<div id="tab3">
+				
+        <button type="button" onclick="loadurl('close')">CLOSE BROWSER</button>
+        <button type="button" onclick="loadurl('updateipeth0')">UPDATE IP eth0</button>
+        <button type="button" onclick="loadurl('updateipwlan0')">UPDATE IP wlan0</button>
+        <button type="button" onclick="getraspiip()">GET IP</button>
+        <button type="button" onclick="openurl('omv')">OPEN OMV</button>
+        <button type="button" onclick="openurl('kod')">OPEN KodExplorer</button>
+        <button type="button" onclick="openurl('admin')">OPEN Admin</button>
+        <button type="button" onclick="openurl('kodi')">OPEN Kodi</button>
+        <button type="button" onclick="loadreboot()">REBOOT</button>
+			</div>
+			<ul>
+				<li><a href="#tab1" class="active">Home</a></li>
+				<li><a href="#tab2">Extra</a></li>
+				<li><a href="#tab3">Tool</a></li>
+			</ul>
+</div>
+
+		
 
 </center>
 </div>
+<script>
+</script>
 </body>
 </html>
 
