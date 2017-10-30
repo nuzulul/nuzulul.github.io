@@ -13,12 +13,11 @@ function loadurl(data) {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("demo").innerHTML = this.responseText;
-        document.getElementById("loader").style.display = "none";
-      document.getElementById("myDiv").style.display = "block";
     }
   };
   xhttp.open("PUT", "http://rtool.sourceforge.net/api.php/data/6", true);
   xhttp.send("nama=raspicommand&isi="+data);
+  setTimeout(function () {document.getElementById("loader").style.display = "none";document.getElementById("myDiv").style.display = "block";}, 5000);
 }
 
 function loadreboot() {
@@ -271,10 +270,18 @@ button {display:block;margin:15px;width:300px;height:50px;}
         <button type="button" onclick="openurl('kodi')">OPEN Kodi</button>
         <button type="button" onclick="loadreboot()">REBOOT</button>
 			</div>
+			<div id="tab4">
+			<h1>Credits</h1>
+			<p>Nuzulul Zulkarnain Haq</p>
+			<p>@bangnuzul</p>
+			<p>2017</p>
+			<p><a href="http://nuzulul.github.io/raspi.html">http://nuzulul.github.io/raspi.html</a></p>
+			</div>
 			<ul>
 				<li><a href="#tab1" class="active">Home</a></li>
 				<li><a href="#tab2">Extra</a></li>
 				<li><a href="#tab3">Tool</a></li>
+				<li><a href="#tab4">About</a></li>
 			</ul>
 </div>
 
