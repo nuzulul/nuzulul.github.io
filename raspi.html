@@ -111,6 +111,12 @@ function makeTabs(selector) {
     }
 
 }
+
+//reload
+function reload(){
+window.location.reload(true);
+window.location.reload(true);
+}
 </script>
 
 <style>
@@ -264,7 +270,7 @@ button {display:block;margin:15px;width:300px;height:50px;}
 <div id="overlay">
   <div id="text">Reboot ...</div>
 </div>
-<div id="overlay1" onclick="window.location.reload(true)">
+<div id="overlay1" onclick="reload()">
   <div id="text">ERROR</div>
 </div>
 <div id="loader"></div>
@@ -315,7 +321,7 @@ button {display:block;margin:15px;width:300px;height:50px;}
 			<p>@bangnuzul</p>
 			<p>2017</p>
 			<p><a href="http://bangnuzul.github.io/" target="_blank">http://bangnuzul.github.io/</a></p>
-			<button type="button" onclick="window.location.reload(true)">Reload</button>
+			<button type="button" onclick="reload()">Reload</button>
 			</div>
 			<ul>
 				<li><a href="#tab1" class="active">Home</a></li>
