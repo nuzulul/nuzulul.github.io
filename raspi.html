@@ -30,6 +30,8 @@ function loadurl(data) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
+      console.log(this.responseText);
+      jsonObject = JSON.parse(this.responseText);
       document.getElementById("demo").innerHTML = this.responseText;
     }
   };
@@ -54,12 +56,11 @@ function getraspiip() {
       console.log(this.responseText);
       jsonObject = JSON.parse(this.responseText);
       document.getElementById('demo').innerHTML = jsonObject.isi;
-        document.getElementById("loader").style.display = "none";
-      document.getElementById("myDiv").style.display = "block";
     }
     };
     xhttp.open("GET", "http://rtool.sourceforge.net/api.php/data/9?date=" + new Date().getTime(), true);
     xhttp.send();
+    setTimeout(function () {aftercommand();}, 1000);
 }
 
 function openurl(data) {
