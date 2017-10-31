@@ -4,9 +4,21 @@
 <script>
 
 function aftercommand(){
-document.getElementById("loader").style.display = "none";
-document.getElementById("myDiv").style.display = "block";
-if (document.getElementById("demo").innerHTML == '-'){document.getElementById("overlay1").style.display = "block";}
+var i = 0;
+(function move() {
+  if (i == 20) {
+  document.getElementById("overlay1").style.display = "block";
+  }
+  if (document.getElementById("demo").innerHTML == '-'){
+  i++
+  setTimeout(move, 1000);
+  } else
+  {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("myDiv").style.display = "block";
+  document.getElementById("overlay1").style.display = "none";
+  }
+})();
 }
 
 
@@ -23,7 +35,7 @@ function loadurl(data) {
   };
   xhttp.open("PUT", "http://rtool.sourceforge.net/api.php/data/6", true);
   xhttp.send("nama=raspicommand&isi="+data);
-  setTimeout(function () {aftercommand();}, 5000);
+  setTimeout(function () {aftercommand();}, 1000);
 }
 
 function loadreboot() {
