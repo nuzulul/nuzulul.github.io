@@ -3,6 +3,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
 <script>
 
+function aftercommand(){
+document.getElementById("loader").style.display = "none";
+document.getElementById("myDiv").style.display = "block";
+if (document.getElementById("demo").innerHTML == '-'){document.getElementById("overlay1").style.display = "block";}
+}
+
 
 function loadurl(data) {
   document.getElementById("loader").style.display = "block";
@@ -17,7 +23,7 @@ function loadurl(data) {
   };
   xhttp.open("PUT", "http://rtool.sourceforge.net/api.php/data/6", true);
   xhttp.send("nama=raspicommand&isi="+data);
-  setTimeout(function () {document.getElementById("loader").style.display = "none";document.getElementById("myDiv").style.display = "block";}, 5000);
+  setTimeout(function () {aftercommand();}, 5000);
 }
 
 function loadreboot() {
@@ -164,6 +170,20 @@ button {display:block;margin:15px;width:300px;height:50px;}
     cursor: pointer;
 }
 
+#overlay1 {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+}
+
 #text{
     position: absolute;
     top: 50%;
@@ -230,6 +250,9 @@ button {display:block;margin:15px;width:300px;height:50px;}
 <body>
 <div id="overlay">
   <div id="text">Reboot ...</div>
+</div>
+<div id="overlay1" onclick="window.location.reload(true)">
+  <div id="text">ERROR</div>
 </div>
 <div id="loader"></div>
 <div id="myDiv">
