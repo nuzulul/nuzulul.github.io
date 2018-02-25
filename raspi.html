@@ -371,11 +371,13 @@ button {display:block;margin:15px;width:300px;height:50px;}
 	var logdiv = document.getElementById('mylog');
 	
 	var nomer = 0;
-
+	var nomerku = 0;
 	// make a simplified log function
 	function logf(str){
 	  nomer = nomer+1;
+	  nomerku = nomerku+1;
 		logdiv.innerHTML = nomer+' '+str + '<br>';
+		if (nomerku == 10){document.getElementById("demo1").innerHTML = '-';nomerku = 0;}
 	}
 	//***************************
 
@@ -422,7 +424,6 @@ button {display:block;margin:15px;width:300px;height:50px;}
 	//***************************
 	
 	</script>
-
 <!-- </body></html> --> <!--
 <!--
 <!--
