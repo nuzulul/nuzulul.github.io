@@ -3,6 +3,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
 <script>
 
+function wssend() {
+ws.send('{"to":"raspimoteserver","msg":"go"}');
+document.getElementById("demo1").innerHTML = '-';
+}
+
 function aftercommand(){
 var i = 0;
 (function move() {
@@ -37,6 +42,7 @@ function loadurl(data) {
   };
   xhttp.open("PUT", "http://rtool.sourceforge.net/api.php/data/6", true);
   xhttp.send("nama=raspicommand&isi="+data);
+  wssend();
   setTimeout(function () {aftercommand();}, 1000);
 }
 
@@ -277,13 +283,13 @@ button {display:block;margin:15px;width:300px;height:50px;}
 <div id="myDiv">
 <center>
 <h1>RASPIMOTE</h1>
-<p id="demo">-</p>
+<span id="demo">-</span><span id="demo1">-</span>
 
 <div class="tabs">
 
 			<div id="tab1">
 				<p>FAVORITE</P>
-        <button type="button" onclick="loadurl('https://suaramuslim.net/')">SUARA MUSLIM</button>
+        <button type="button" onclick="loadurl('https://tunein.com/radio/Suara-Muslim-938-s157772/')">SUARA MUSLIM</button>
         <button type="button" onclick="loadurl('file:///home/pi/Public/audio.html?mp3=http%3A%2F%2F125.160.17.21%3A8200%2F%3B')">MQ FM</button>
         <button type="button" onclick="loadurl('file:///home/pi/Public/audio.html?mp3=asmaulhusna.mp3')">ASMAUL HUSNA</button>
         <button type="button" onclick="loadurl('file:///home/pi/Public/audio.html?mp3=juz30.mp3')">JUZ 30</button>
@@ -343,6 +349,7 @@ button {display:block;margin:15px;width:300px;height:50px;}
 			<p>2017</p>
 			<p><a href="http://bangnuzul.github.io/" target="_blank">http://bangnuzul.github.io/</a></p>
 			<button type="button" onclick="reload()">Reload</button>
+			<span id="mylog">Received:<br></span>
 			</div>
 			<ul>
 				<li><a href="#tab1" class="active">Home</a></li>
@@ -352,12 +359,68 @@ button {display:block;margin:15px;width:300px;height:50px;}
 			</ul>
 </div>
 
-		
-
 </center>
 </div>
-<script>
-</script>
+
+	<!-- WEBSOCKET SIMPLE SCRIPT -->
+	<script type="text/javascript">
+
+	// --- LOG ---
+	//***************************
+	// get log object from html 
+	var logdiv = document.getElementById('mylog');
+	
+	var nomer = 0;
+
+	// make a simplified log function
+	function logf(str){
+	  nomer = nomer+1;
+		logdiv.innerHTML = nomer+' '+str + '<br>';
+	}
+	//***************************
+
+	// --- WEBSOCKET ---
+	//***************************
+	// make new conncetion
+	var ws = new WebSocket('ws://achex.ca:4010');
+
+	// add event handler for incomming message
+	ws.onmessage = function(evt){
+		var my_received_message = evt.data;
+		logf('received: ' + my_received_message);
+		if (my_received_message.indexOf('{"SID":') == 0) {
+      logf('ok');
+      ws.send('{"setID":"raspimoteclient","passwd":"mypass"}');
+		}
+		if (my_received_message.indexOf('{"to":"raspimoteclient","msg":"myvalue","FROM":"raspimoteserver","sID":"') == 0) {
+		document.getElementById("demo1").innerHTML = 'SERVER OK';
+		}
+	};
+
+	// add event handler for diconnection 
+	ws.onclose= function(evt){
+		logf('log: Diconnected');
+	};
+
+	// add event handler for error 
+	ws.onerror= function(evt){
+		logf('log: Error');
+	};
+
+	// add event handler for new connection 
+	ws.onopen= function(evt){
+		logf('log: Connected');
+	};
+
+	// make a simple send function
+	function send(){
+		var input = document.getElementById('userinput');
+		// send content of input field into websocket
+		ws.send(input.value);
+		// erase input field
+	}
+	//***************************
+	
+	</script>
 </body>
 </html>
-
