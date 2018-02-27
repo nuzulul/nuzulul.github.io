@@ -290,7 +290,7 @@ button,input {display:block;margin:15px;width:300px;height:40px;}
 			<div id="tab1">
         <p>OPEN URL</P>
         <input id="userinput" type="text" value="">
-        <button type="button" onclick="loadurl(document.getElementById('userinput').value)">GO</button>
+        <button type="button" onclick="loadurl(document.getElementById('userinput').value);document.getElementById('userinput').value =''">GO</button>
 				<p>FAVORITE</P>
         <button type="button" onclick="loadurl('https://tunein.com/radio/Suara-Muslim-938-s157772/')">SUARA MUSLIM</button>
         <button type="button" onclick="loadurl('file:///home/pi/Public/audio.html?mp3=http%3A%2F%2F125.160.17.21%3A8200%2F%3B')">MQ FM</button>
