@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;script-src 'self' https://ajax.googleapis.com; connect-src 'self' http://localhost http://rtool.sourceforge.net 192.168.43.198 192.168.205.1;">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <script src="jquery-1.8.1.min.js"></script>
+        <title>Raspimote</title>
+    </head>
+    <body>
+        <div class="app">
+            <h1>Raspimote</h1>
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
+               
+                <p id="msg">no</p>
+                <button id="send">Send</button>
+                <button id="fungsi">fungsi</button>
+                <button id="stack">stack</button>
+                <button id="basic">basic</button>
+                <button id="jwt">jwt</button>
+                <button id="cors">cors</button>
+                <button id="corsauth">corsauth</button>
+                <button id="corsjwt">corsjwt</button>
+            </div>
+        </div>
+<script>
+function cari(data){
+            $.ajax({
+                xhrFields: {
+                    withCredentials: true
+                },
+                type: "GET",
+                url: "http://localhost/demo/crudapi/php-api-auth-master/api.php?csrf="+data
+            }).done(function (data) {
+                console.log(data);
+                $("#msg").text(data);
+                //alert("Data: " + data );
+            });
+            }
+            
+function cari2(data){
+            $.ajax({
+                xhrFields: {
+                    withCredentials: true
+                },
+                type: "GET",
+                url: "http://192.168.43.198/demo/crudapi/php-api-auth-master/api.php?csrf="+data
+            }).done(function (data) {
+                console.log(data);
+                $("#msg").text(data);
+                //alert("Data: " + data );
+            });
+            }            
+function cari3(data){
+            $.ajax({
+                xhrFields: {
+                    withCredentials: true
+                },
+                type: "GET",
+                url: "http://192.168.205.1/demo/crudapi/php-api-auth-master/api.php?csrf="+data
+            }).done(function (data) {
+                console.log(data);
+                $("#msg").text(data);
+                //alert("Data: " + data );
+            });
+            } 
+            
+function cari4(data){
+            $.ajax({
+                xhrFields: {
+                    withCredentials: true
+                },
+                headers: {
+                   'Authorization' : data
+                },
+                type: "GET",
+                url: "http://192.168.205.1/demo/PHP-Simple-JWT-Auth-master/index.php"
+            }).done(function (data) {
+                console.log(data);
+                $("#msg").text(data);
+                //alert("Data: " + data );
+            });
+            } 
+            
+$(document).ready(function(){
+    $("#send").click(function(){
+            $("#msg").text("no");
+            $.ajax({
+                xhrFields: {
+                    withCredentials: true
+                },
+                type: "POST",
+                data : { username: "admin", password: "admin" },
+                url: "http://localhost/demo/crudapi/php-api-auth-master/api.php"
+            }).done(function (data) {
+                console.log(data);
+                $("#msg").text(data);
+                data = data.match(/"([^"]*)"/);
+                data = data[1];
+                cari(data);
+            });
+    });
+    $("#fungsi").click(function(){
+            $("#msg").text("no");
+            $.ajax({
+                xhrFields: {
+                    withCredentials: true
+                },
+                type: "POST",
+                data : { username: "admin", password: "admin" },
+                url: "http://192.168.43.198/demo/crudapi/php-api-auth-master/api.php"
+            }).done(function (data) {
+                console.log(data);
+                $("#msg").text(data);
+                data = data.match(/"([^"]*)"/);
+                data = data[1];
+                cari2(data);
+            });
+    });
+    $("#stack").click(function(){
+            $("#msg").text("no");
+            $.ajax({
+                xhrFields: {
+                    withCredentials: true
+                },
+                type: "POST",
+                data : { username: "admin", password: "admin" },
+                url: "http://192.168.205.1/demo/crudapi/php-api-auth-master/api.php"
+            }).done(function (data) {
+                console.log(data);
+                $("#msg").text(data);
+                data = data.match(/"([^"]*)"/);
+                data = data[1];
+                cari3(data);
+            });
+    });
+    $("#jwt").click(function(){
+            $("#msg").text("no");
+            $.ajax({
+                xhrFields: {
+                    withCredentials: true
+                },
+                type: "POST",
+                data : { usr: "admin", pw: "admin" },
+                url: "http://192.168.205.1/demo/PHP-Simple-JWT-Auth-master/index.php"
+            }).done(function (data) {
+                console.log(data);
+                $("#msg").text(data);
+                cari4(data);
+            });
+    });
+    $("#basic").click(function(){
+            $("#msg").text("no");
+            $.ajax({
+                xhrFields: {
+                    withCredentials: true
+                },
+                type: "POST",
+                data : { username: "admin", password: "admin" },
+                url: "http://192.168.205.1/demo/crudapi/php-api-auth-master/api.php"
+            }).done(function (data) {
+                console.log(data);
+                $("#msg").text(data);
+                data = data.match(/"([^"]*)"/);
+                data = data[1];
+                cari3(data);
+            });
+    });
+    $("#basic1").click(function(){
+            var auth = make_basic_auth('admin','admin');
+            $("#msg").text("no");
+            $.ajax({
+                xhrFields: {withCredentials: true},
+                type: "GET",
+                username:"admin",
+                password:"admin",
+                //beforeSend: function(xhr) { xhr.setRequestHeader("Authorization",auth); },
+                crossDomain: true,
+                contentType: 'application/json', 
+                url: "http://192.168.205.1/demo/crudapi/php-api-auth-master/api2.php"
+            }).done(function (data) {
+                console.log(data);
+                $("#msg").text(data);
+            });
+    });
+    $("#cors").click(function(){
+            $("#msg").text("no");
+            $.ajax({
+                //xhrFields: {withCredentials: true},
+                type: "GET",
+                //username:"admin",
+                //password:"admin",
+                //beforeSend: function(xhr) { xhr.setRequestHeader("Authorization",auth); },
+                //crossDomain: true,
+                //contentType: 'application/json', 
+                url: "http://192.168.205.1/demo/cors/1corsbasic.php"
+            }).done(function (data) {
+                console.log(data);
+                $("#msg").text(data);
+            });
+    });
+    $("#corsauth").click(function(){
+            $("#msg").text("no");
+            $.ajax({
+                //xhrFields: {withCredentials: true},
+                type: "GET",
+                //username:"admin",
+                //password:"admin",
+                beforeSend: function(xhr) { xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin')); },
+                //crossDomain: true,
+                //contentType: 'application/json', 
+                url: "http://192.168.205.1/demo/cors/2corsauth.php"
+            }).done(function (data) {
+                console.log(data);
+                $("#msg").text(data);
+            });
+    });
+    $("#corsjwt").click(function(){
+            $("#msg").text("no");
+            $.ajax({
+                type: "POST",
+                data : { usr: "admin", pw: "admin" },
+                url: "http://192.168.205.1/demo/cors/3corsjwt.php"
+            }).done(function (data) {
+                console.log(data);
+                $("#msg").text(data);
+                            $.ajax({
+                                headers: {'Authorization' : 'hook '+data},
+                                //xhrFields: {withCredentials: true},
+                                //beforeSend: function(xhr) { xhr.setRequestHeader('Authorization' , 'hook '+data); },
+                                type: "GET",
+                                url: "http://192.168.205.1/demo/cors/3corsjwt.php"
+                            }).done(function (data) {
+                                console.log(data);
+                                $("#msg").text(data);
+                                //alert("Data: " + data );
+                            });
+            });
+    });    
+});
+</script>
+</body>
+</html>
