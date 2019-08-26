@@ -40,3 +40,7 @@ jspm_packages
 *.url
 *.bat
 *.lnk
+
+#hook
+autogit.json
+.history
