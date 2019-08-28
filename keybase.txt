@@ -1,0 +1,68 @@
+==================================================================
+https://keybase.io/nuzulul
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://nuzulul.github.io
+  * I am nuzulul (https://keybase.io/nuzulul) on keybase.
+  * I have a public key with fingerprint BAFD B247 9322 B771 14AC  B67E 2AEC C56C A582 3417
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0101b684d370b12abf8a8e0411e798d01b7d31956521f9371be1f00fb3d33b6e43580a",
+      "fingerprint": "bafdb2479322b77114acb67e2aecc56ca5823417",
+      "host": "keybase.io",
+      "key_id": "2aecc56ca5823417",
+      "kid": "0101b684d370b12abf8a8e0411e798d01b7d31956521f9371be1f00fb3d33b6e43580a",
+      "uid": "d8b48e69e692e1f368d31f48b366b419",
+      "username": "nuzulul"
+    },
+    "service": {
+      "hostname": "nuzulul.github.io",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1566953581,
+  "expire_in": 157680000,
+  "prev": "7f1cc74fe5ac8b2db934b8a7e36646b994430d99cb7f7038b616f356f455edb7",
+  "seqno": 8,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.1.3
+Comment: https://keybase.io/crypto
+
+yMImAnicrZJfSBRBHMfvyso77N9L9RAZS1CSyM7O7M7sZX+gfyD9eyiw0q6d3dm7
+zWvvvNu9UrF/ZPVgQSBk+eQf6J8KJmFSQplZkIImBBlFvaQVSFCUSGazVg9Bjw0D
+w8x8vt/5/n5Mz9yZvqD/+5IPE6+Gh074nz6oc33FbOBwhUDjRpkQqhBK2PTCYgZL
+OeESyxBCgghEQBWCDIhFCiSNmkQjTEQAMKwSg19iAwJVVmQJmCrEgDJgiqJJoQEh
+VRiCMhE1IVcwLTvCkomkZTvclmqmQSWEVShJFGMAkKZTBTNJY7ouK7omEwkigLkw
+Gk95Ch6OaimWZ8X5Gd+Ep+P9g//Pud1pO4NQRJii8ilxECqEq01EKFQUioDqgSmW
+tLXDjNO2W+7G3JhQmSvww7SlM6+vXiF/A3kRy4m69FdNiWTcievxGL+OOk4iFfLk
+TlnC448wGv7tFKaWbfBeckWaJVNW3BZCgJO6Y3nWQFYUVebhQa7AjiasJAtbHiFj
+hYh8eO+wNLfEJtB1jEwmazqhkkFViCjRMOMVIYWqKkJQNFRVp9jEIiRUAYoJZcVE
+sswM6nU6xUrtuBAiPKYW4ZYpK2JrjptkQmX3/aIMnz/omz1rhvfHfMHAgj8/z22d
+M7UhuLE6u6iwr2l0VW/26FDO+bOLDr142Vm8pyrQ8nxwXtfpKenRyO6T2W5BsOBo
+fc+Wj6XV1xsrrqyN9aRfX7oZmPpsRdtvPe5+chV1rLjcKeDozMy6ldsXfn2YMXmv
+8G5NVijvR1V5bdapwLV9bTWhzZ3rPw1L8MZq6cuKBZO1OcuvHph62zo+8f5cKStr
++XbhIrn3reBF4Lh2sQ2d2dvXWF2xoxGPrQ8t7hgZbN71vaq+t2n+2vxZ/W99DR+l
+3fsLR4cjWYDmW/Y2GJhYdmy8fasvOrK/yW+gd5GSO133+8fcS7sK1r0ib07aE7eb
+YwebTg00PHO7MtZkLu2t7d9Us/MntChJBQ==
+=/cLr
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/nuzulul
+
+==================================================================
