@@ -12,9 +12,5 @@ fields:
   name: date
   label: date
 - type: text
-  name: author
-  label: author
-  default: Nuzulul ZH
-- type: text
   name: categories
   label: categories
