@@ -1,6 +1,6 @@
 ---
 layout: post
-title: MY TOP SECRET
+title: MYPASSWORD.TXT
 date: 2020-10-04 00:00:00 +0700
 categories: private
 
