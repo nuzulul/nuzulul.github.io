@@ -16,7 +16,6 @@ Screenshot :
 ![](/uploads/siomdo1.jpg)
 
 Size : 6.8 MB  
-Version : 1.0.1.9
-Lisensi : GPL  
+Version : 1.0.1.9   
 Operating System : Microsoft Windows XP/Vista/7/8/10  
 Download : [https://sourceforge.net/projects/siomdo/files/latest/download](https://sourceforge.net/projects/siomdo/files/latest/download "https://sourceforge.net/projects/siomdo/files/latest/download")
