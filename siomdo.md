@@ -15,8 +15,6 @@ Screenshot :
 
 ![](/uploads/siomdo1.jpg)
 
-![](/uploads/siomdo3.jpg)
-
 Download :
 
 [https://sourceforge.net/projects/siomdo/files/latest/download](https://sourceforge.net/projects/siomdo/files/latest/download "https://sourceforge.net/projects/siomdo/files/latest/download")
