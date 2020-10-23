@@ -16,3 +16,4 @@ fields:
   label: categories
 pages:
 - _posts/2020-10-04-mypassword.txt.md
+- _posts/unable-to-load-the-eventmachine-c-extension-to-use-the-pure-ruby-reactor-requi-re-em-pure_ruby.md
