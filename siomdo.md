@@ -4,7 +4,7 @@ title: Siomdo
 permalink: "/siomdo/"
 
 ---
-Siomdo adalah program text to speech (TTS) bahasa Indonesia.
+Siomdo adalah program text to speech (TTS) bahasa Indonesia gratis.
 
 Fitur :
 
@@ -15,6 +15,9 @@ Screenshot :
 
 ![](/uploads/siomdo1.jpg)
 
-Download :
+Size : 6.8 MB  
+Version : 1.0.1.9
 
-[https://sourceforge.net/projects/siomdo/files/latest/download](https://sourceforge.net/projects/siomdo/files/latest/download "https://sourceforge.net/projects/siomdo/files/latest/download")
+Lisensi : GPL  
+Operating System : Microsoft Windows XP/Vista/7/8/10  
+Download : [https://sourceforge.net/projects/siomdo/files/latest/download](https://sourceforge.net/projects/siomdo/files/latest/download "https://sourceforge.net/projects/siomdo/files/latest/download")
