@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Siomdo - TTS Indonesia
+title: Siomdo
 permalink: "/siomdo/"
 
 ---
