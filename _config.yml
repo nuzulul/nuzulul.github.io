@@ -15,9 +15,9 @@
 # in the templates via {{ site.myvariable }}.
 title: Nuzulul Zulkarnain Haq
 # email: nuzulul
-author: Narojil Soft
+author: Nuzulul
 description: >- # this means to ignore newlines until "baseurl:"
-  Copyleft 2020 Narojil Soft
+  Narojil Soft
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://nuzulul.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: nuzululzh
