@@ -10,6 +10,10 @@ Clear Git history by removing all commits
     git checkout --orphan temp_branch
     git add -A
     git commit -am "The first commit"
-    git branch -D master
-    git branch -m master
-    git push -f origin master
+    git branch -D main
+    git branch -m main
+    git push -f origin main
+
+Referensi :
+
+[https://www.shellhacks.com/git-remove-all-commits-clear-git-history-local-remote/](https://www.shellhacks.com/git-remove-all-commits-clear-git-history-local-remote/ "https://www.shellhacks.com/git-remove-all-commits-clear-git-history-local-remote/")
