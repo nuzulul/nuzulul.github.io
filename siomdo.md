@@ -4,7 +4,7 @@ title: Siomdo
 permalink: "/siomdo/"
 
 ---
-Siomdo adalah program text to speech (TTS) dalam bahasa Indonesia. Program Siomdo dapat mengkonversi teks dan mengucapkannya lewat speaker. Selain itu juga dapat mengkonversi teks ke dalam bentuk file WAV.
+Siomdo adalah program text to speech (TTS) dalam bahasa Indonesia. Program Siomdo dapat mengkonversi teks dan mengucapkannya lewat speaker komputer. Selain itu juga dapat mengkonversi teks ke dalam bentuk file WAV.
 
 Fitur :
 
