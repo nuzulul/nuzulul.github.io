@@ -2,12 +2,12 @@
 layout: post
 title: Unable to load the EventMachine C extension; To use the pure-ruby reactor,
   requi re 'em/pure_ruby'
-date: 2020-10-23 00:00:00 +0700
+date: 2020-10-23T00:00:00.000+07:00
 categories: jekyll
 
 ---
 Masalah :  
-Setelah melakukan perintah "bundle update" jekyll tidak bisa dijalankan dan muncul error EventMachine seperti dibawah ini : 
+Setelah melakukan perintah "bundle update" jekyll tidak bisa dijalankan dan muncul error EventMachine seperti dibawah ini :
 
     E:\data\github\nuzulul.github.io>bundle exec jekyll serve --future --livereload
     
@@ -74,7 +74,7 @@ Setelah perintah "bundle update" ada 2 EventMachine di library
      1. eventmachine-1.2.7
      2. eventmachine-1.2.7-x86-mingw32
 
-Solusi :
+Solusi 1:
 
 Unistall EventMachine yang no 2
 
@@ -86,6 +86,12 @@ Unistall EventMachine yang no 2
      3. All versions
     > 2
     Successfully uninstalled eventmachine-1.2.7-x86-mingw32
+
+Solusi 2 :
+
+Tambahkan gem
+
+    gem 'eventmachine', '1.2.7', git: 'https://github.com/eventmachine/eventmachine', tag: 'v1.2.7'
 
 Referensi :
 
