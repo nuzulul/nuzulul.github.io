@@ -8,3 +8,49 @@
 <a href=""></a></br>
 <a href=""></a></br>
 <a href=""></a></br>
+
+<p>BSMI RADIO</p>
+
+
+<div id="wt">
+<a href="" id="awt">Walkie Talkie REPL<a></br></br>
+<a href="" id="local">Walkie Talkie local<a></br></br>
+<a href="" id="hero">Walkie Talkie hero<a></br></br>
+<a href="" id="glitch">Walkie Talkie glitch<a></br></br>
+</div>
+
+<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+<script>
+$(document).ready(function(){
+
+function stringtohash(data){
+  var hash = 0, i, chr;
+  if (data.length === 0) return hash;
+  for (i = 0; i < data.length; i++) {
+    chr   = data.charCodeAt(i);
+    hash  = ((hash << 5) - hash) + chr;
+    hash |= 0; // Convert to 32bit integer
+  }
+  return hash;
+}
+
+  //document.getElementById("overlay").onclick = function() {off()};
+  var url = 'https://radio.bsmiapp.repl.co/radio';
+  let today = new Date().toISOString().slice(0, 10);
+  var wturl = url+"?key="+stringtohash(today);
+  $("#awt").attr("href",wturl);
+  
+  var local = "localhost:3000/radio?key="+stringtohash(today);
+  $("#local").attr("href",local);
+  
+  var app = "https://bsmiradio.herokuapp.com/radio?key="+stringtohash(today);
+  $("#hero").attr("href",app);
+  
+  var app = "https://bsmiradio.glitch.me/radio?key="+stringtohash(today);
+  $("#glitch").attr("href",app);
+
+});
+</script>
+
+  
+ 
