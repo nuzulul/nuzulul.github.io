@@ -26,5 +26,5 @@ collections:
       - {label: "Rating (scale of 1-5)", name: "rating", widget: "number" , required: false}
       - {label: "Comments", name: "comments", widget: "boolean", default: true}
       - {label: "Body", name: "body", widget: "markdown"}
-site_url: https://ngawur.netlify.app/
-display_url: https://ngawur.netlify.app/
+site_url: https://nuzulul.github.io/
+display_url: https://nuzulul.github.io/
