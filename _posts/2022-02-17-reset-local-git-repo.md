@@ -11,8 +11,6 @@ comments: true
 ---
 `git remote add origin https://github.com/nuzulul/nuzulul.github.io`
 
-`
-git fetch --all`
+`git fetch --all`
 
-`
-git reset --hard origin/main`
+`git reset --hard origin/main`
