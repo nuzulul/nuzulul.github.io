@@ -2,7 +2,7 @@ backend:
   name: git-gateway
   branch: master # Branch to update (optional; defaults to master)
   repo: nuzulul/nuzulul.github.io
-  site_domain: ngawur.netlify.app
+  site_domain: clever-pasteur-298d35.netlify.app
 # This line should *not* be indented
 publish_mode: editorial_workflow
 # This line should *not* be indented
