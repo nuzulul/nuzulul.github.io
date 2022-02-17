@@ -80,7 +80,13 @@
         })
     </script>
 
-
+  <script> 
+  window.addEventListener('load', function() {
+    console.log('All assets are loaded');
+    netlifyIdentity.init({APIUrl: 'https://nuzulul.netlify.app/.netlify/identity'});
+  });
+  localStorage.setItem("netlifySiteURL", "https://nuzulul.netlify.app/");
+  </script>
 </body>
 
 </html>
