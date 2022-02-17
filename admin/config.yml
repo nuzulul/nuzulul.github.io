@@ -5,6 +5,7 @@ backend:
   site_domain: nuzulul.netlify.app
   identity_url: "https://nuzulul.netlify.app/.netlify/identity"
   gateway_url:  "https://nuzulul.netlify.app/.netlify/git"
+  base_url: https://nuzulul.netlify.app
 # This line should *not* be indented
 publish_mode: editorial_workflow
 # This line should *not* be indented
