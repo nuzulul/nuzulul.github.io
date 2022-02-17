@@ -3,6 +3,8 @@ backend:
   branch: master # Branch to update (optional; defaults to master)
   repo: nuzulul/nuzulul.github.io
   site_domain: nuzulul.netlify.app
+  identity_url: "https://nuzulul.netlify.app/.netlify/identity"
+  gateway_url:  "https://nuzulul.netlify.app/.netlify/git"
 # This line should *not* be indented
 publish_mode: editorial_workflow
 # This line should *not* be indented
