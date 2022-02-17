@@ -14,8 +14,12 @@
   <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
   <script> 
   (function() {
-  netlifyIdentity.init({APIUrl: 'https://nuzulul.netlify.app/.netlify/identity'});
+  //netlifyIdentity.init({APIUrl: 'https://nuzulul.netlify.app/.netlify/identity'});
   })();
+  window.addEventListener('load', function() {
+    console.log('All assets are loaded');
+    netlifyIdentity.init({APIUrl: 'https://nuzulul.netlify.app/.netlify/identity'});
+  })
   </script>
 </body>
 </html>
