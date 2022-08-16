@@ -1,0 +1,6 @@
+I"5<p><code class="language-plaintext highlighter-rouge">git remote add origin https://github.com/nuzulul/nuzulul.github.io</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">git fetch --all</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">git reset --hard origin/main</code></p>
+:ET

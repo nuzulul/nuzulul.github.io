@@ -1,0 +1,14 @@
+I"g<p>Clear Git history by removing all commits</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout --orphan temp_branch
+git add -A
+git commit -am "The first commit"
+git branch -D main
+git branch -m main
+git push -f origin main
+</code></pre></div></div>
+
+<p>Referensi :</p>
+
+<p><a href="https://www.shellhacks.com/git-remove-all-commits-clear-git-history-local-remote/" title="https://www.shellhacks.com/git-remove-all-commits-clear-git-history-local-remote/">https://www.shellhacks.com/git-remove-all-commits-clear-git-history-local-remote/</a></p>
+:ET
