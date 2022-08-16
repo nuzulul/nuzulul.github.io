@@ -36,20 +36,11 @@ jspm_packages
 # Optional REPL history
 .node_repl_history
 
-
-
-
-
-
-
-#custom
-*.url
-*.bat
-*.lnk
-
 #hook
 autogit.json
 .history
 _site
 .sass-cache
 .jekyll-metadata
+*.url
+*.lnk
