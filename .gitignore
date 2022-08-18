@@ -44,3 +44,4 @@ _site
 .jekyll-metadata
 *.url
 *.lnk
+.jekyll-cache
