@@ -49,7 +49,32 @@
         height: 1000,
         duration: 700,
         backgroundColor: "#2F2F2F",
-        hideControls: "share",
+        //hideControls: "share",
+        onReady: function (flipBook) {
+          // after flip book is completely loaded
+          
+          var s = document.querySelector(".ti-sharethis");
+          s.outerHTML = s.outerHTML;
+          s = document.querySelector(".ti-sharethis");
+          s.onclick = function(e) {
+          }
+          const share = e => {
+            if (navigator.share) {
+              navigator
+                .share({
+                  title: "Share majalah",
+                  text: "Majalah Care for Life",
+                  url: "https://www.bsmijatim.org/p/majalah.html?fileid="+fileid
+                })
+                .then(() => console.log("thanks for share"))
+                .catch(error => console.log("error", error));
+            }
+          };
+          if(!navigator.share) {
+            document.getElementById('tip').className = 'show'
+          }
+          document.querySelector(".ti-sharethis").addEventListener("click", share);
+        },
       };
       var flipBook = $("#flipbookContainer").flipBook(pdf, options);
     });
