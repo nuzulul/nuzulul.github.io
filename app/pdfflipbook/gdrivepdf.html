@@ -71,7 +71,8 @@
             }
           };
           if(!navigator.share) {
-            document.getElementById('tip').className = 'show'
+            //document.getElementById('tip').className = 'show'
+            document.querySelector(".ti-sharethis").style.display = "none";
           }
           document.querySelector(".ti-sharethis").addEventListener("click", share);
         },
