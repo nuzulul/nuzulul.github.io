@@ -44,7 +44,11 @@
 
     jQuery(document).ready(function () {
       //uses source from online(make sure the file has CORS access enabled if used in cross domain)
-      var pdf = 'https://cors.bsmijatim.workers.dev/?https%3A%2F%2Fdrive.google.com%2Fuc%3Fexport%3Ddownload%26id%3D'+fileid;
+      //var api = 'https://cors.bsmijatim.workers.dev/?'
+      //var api = 'https://geturl.deno.dev/?url='
+      var api = 'https://feed.jerukenak99.workers.dev/'
+      //var pdf = api+'https%3A%2F%2Fdrive.google.com%2Fuc%3Fexport%3Ddownload%26id%3D'+fileid;
+      var pdf = api+'https://drive.google.com/uc?export=download&id='+fileid;
       var options = {
         height: 1000,
         duration: 700,
