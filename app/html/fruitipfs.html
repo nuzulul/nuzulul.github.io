@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+</head>
+
+<body>
+	<div id="canvas"></div>
+	<div id="room-num"></div>
+      <p id="peer-info">
+        Right now youʼre the only person with the page open, but you can cheat
+        and just open this URL in another tab to see what itʼs like with others.
+      </p>
+
+	<script type="module">
+			import {joinRoom, selfId} from 'https://cdn.jsdelivr.net/npm/trystero@0.17.0/+esm'
+
+			const byId = document.getElementById.bind(document)
+			const canvas = byId('canvas')
+			const peerInfo = byId('peer-info')
+			const noPeersCopy = peerInfo.innerText
+			const config = {appId: 'trystero-demo1'}
+			const cursors = {}
+			const fruits = [
+			  '🍏',
+			  '🍎',
+			  '🍐',
+			  '🍊',
+			  '🍋',
+			  '🍌',
+			  '🍉',
+			  '🍇',
+			  '🍓',
+			  '🫐',
+			  '🍈',
+			  '🍒',
+			  '🍑',
+			  '🥭',
+			  '🍍',
+			  '🥥',
+			  '🥝'
+			]
+			const randomFruit = () => Math.floor(Math.random() * fruits.length)
+
+			let mouseX = 0
+			let mouseY = 0
+			let room
+			let sendMove
+			let sendClick
+
+			init(49)
+			document.documentElement.className = 'ready'
+			addCursor(selfId, true)
+
+			addEventListener('mousemove', ({clientX, clientY}) => {
+			  mouseX = clientX / innerWidth
+			  mouseY = clientY / innerHeight
+			  moveCursor([mouseX, mouseY], selfId)
+			  if (room) {
+				sendMove([mouseX, mouseY])
+			  }
+			})
+
+			addEventListener('click', () => {
+			  const payload = [randomFruit(), mouseX, mouseY]
+
+			  dropFruit(payload)
+			  if (room) {
+				sendClick(payload)
+			  }
+			})
+
+			addEventListener('touchstart', e => {
+			  const x = e.touches[0].clientX / innerWidth
+			  const y = e.touches[0].clientY / innerHeight
+			  const payload = [randomFruit(), x, y]
+
+			  dropFruit(payload)
+			  moveCursor([x, y], selfId)
+
+			  if (room) {
+				sendMove([x, y])
+				sendClick(payload)
+			  }
+			})
+
+			function init(n) {
+			  let getMove
+			  let getClick
+
+			  room = joinRoom(config, 'room' + n)
+			  ;[sendMove, getMove] = room.makeAction('mouseMove')
+			  ;[sendClick, getClick] = room.makeAction('click')
+
+			  byId('room-num').innerText = 'room #' + n
+			  room.onPeerJoin(addCursor)
+			  room.onPeerLeave(removeCursor)
+			  getMove(moveCursor)
+			  getClick(dropFruit)
+			}
+
+			function moveCursor([x, y], id) {
+			  const el = cursors[id]
+
+			  if (el && typeof x === 'number' && typeof y === 'number') {
+				el.style.left = x * innerWidth + 'px'
+				el.style.top = y * innerHeight + 'px'
+			  }
+			}
+
+			function addCursor(id, isSelf) {
+			  const el = document.createElement('div')
+			  const img = document.createElement('img')
+			  const txt = document.createElement('p')
+
+			  el.className = `cursor${isSelf ? ' self' : ''}`
+			  el.style.left = el.style.top = '-99px'
+			  img.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAXCAYAAADtNKTnAAAAkElEQVQ4jeWU0Q6AIAhFwfn/v0yzxAmhMFlP3SdHcLiJikQEhjiI1seXNISeAPWl2UHlQwl1cvQ3CHXtcqoHQcQBm2Ji9C5kB2TY8XRaPcPK9NvuwVo4o2rZ1Pb1WqusigIOhhpEXMIoSEPuXT7YEgnJakAyblJO+Mzp6Ry5+eY9ibppOem7Ixo7r71bDwBwAUfkTyAUEhR3AAAAAElFTkSuQmCC'
+			  txt.innerText = isSelf ? 'you' : id.slice(0, 4)
+			  el.appendChild(img)
+			  el.appendChild(txt)
+			  canvas.appendChild(el)
+			  cursors[id] = el
+
+			  if (!isSelf) {
+				sendMove([Math.random() * 0.93, Math.random() * 0.93], id)
+				updatePeerInfo()
+			  }
+
+			  return el
+			}
+
+			function removeCursor(id) {
+			  if (cursors[id]) {
+				canvas.removeChild(cursors[id])
+			  }
+			  updatePeerInfo()
+			}
+
+			function updatePeerInfo() {
+			  const count = Object.keys(room.getPeers()).length
+			  peerInfo.innerHTML = count
+				? `Right now <em>${count}</em> other peer${
+					count === 1 ? ' is' : 's are'
+				  } connected with you. Click to send them some fruit.`
+				: noPeersCopy
+			}
+
+			function dropFruit([fruitIndex, x, y]) {
+			  const fruit = fruits[fruitIndex]
+			  if (!fruit || typeof x !== 'number' || typeof y !== 'number') {
+				return
+			  }
+
+			  const el = document.createElement('div')
+			  el.className = 'fruit'
+			  el.innerText = fruit
+			  el.style.left = x * innerWidth + 'px'
+			  el.style.top = y * innerHeight + 'px'
+			  canvas.appendChild(el)
+			  setTimeout(() => canvas.removeChild(el), 3000)
+			}
+	</script>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+::selection {
+  color: #000;
+  background-color: #fff;
+}
+
+html {
+  font-size: 10px;
+  font-variant-ligatures: none;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: 'Space Mono', monospace;
+  padding: 1rem;
+  padding-bottom: 6rem;
+}
+
+.ready,
+.ready a:hover {
+  cursor: none;
+}
+
+#canvas {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 2;
+  user-select: none;
+}
+
+header {
+  margin-top: 2.4rem;
+  margin-bottom: 6rem;
+  border-top: 10px solid #fff;
+  border-bottom: 10px solid #fff;
+  padding: 3rem 0;
+}
+
+header > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 4rem;
+}
+
+header a {
+  background-color: blue;
+  color: #fff;
+  text-decoration: none;
+  padding: 1rem;
+  font-size: 2rem;
+  font-weight: bold;
+  display: inline-block;
+  font-style: italic;
+  border-radius: 3px;
+  user-select: none;
+}
+
+#room-num {
+  font-size: 1.6rem;
+}
+
+header a:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+h1 {
+  font-size: 7rem;
+  text-transform: lowercase;
+  display: inline-block;
+  position: absolute;
+  transform: rotate(-90deg) translateX(-100%) translateY(-70%);
+  transform-origin: 0;
+}
+
+h1 sup {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2rem;
+  margin-left: 1rem;
+  color: #fff;
+}
+
+h2 {
+  font-size: 2.4rem;
+  line-height: 1.8;
+}
+
+main {
+  font-size: 1.7rem;
+}
+
+hr {
+  margin: 4rem 0;
+  border-bottom: 3px solid #fff;
+}
+
+p,
+pre {
+  margin-bottom: 2rem;
+}
+
+p span {
+  white-space: nowrap;
+}
+
+p a {
+  color: white;
+  text-underline-offset: 1px;
+  text-decoration-thickness: 4px;
+  text-decoration-color: blue;
+  transition: text-decoration-thickness ease-out 0.2s;
+}
+
+p a:hover {
+  text-decoration-color: #fff;
+  text-decoration-thickness: 8px;
+}
+
+p em {
+  font-style: normal;
+  background-color: #fff;
+  color: #000;
+  padding: 0 1rem;
+  animation: pulse 1s ease-in-out infinite alternate;
+}
+
+pre {
+  font-family: 'Space Mono', monospace;
+  background-color: #222;
+  padding: 1.8rem;
+  font-size: 1.5rem;
+  line-height: 2;
+  overflow: auto;
+}
+
+.cursor,
+.fruit {
+  position: absolute;
+}
+
+.cursor {
+  margin-left: -10px;
+  margin-top: -2px;
+}
+
+.cursor.self p {
+  color: #000;
+  background-color: #fff;
+  font-size: 2rem;
+  padding: 0 0.5rem;
+}
+
+.cursor img {
+  width: 34px;
+  height: 46px;
+  image-rendering: pixelated;
+}
+
+.cursor p {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.fruit {
+  font-size: 5rem;
+  animation: drop 3s ease-in forwards;
+}
+
+@keyframes drop {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(10000%);
+  }
+}
+
+@keyframes pulse {
+  from {
+    opacity: 0.4;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 980px) {
+  html {
+    font-size: 8px;
+  }
+
+  h1 {
+    position: static;
+    transform: none;
+  }
+}
+</style>
+</body>
+
+</html>
