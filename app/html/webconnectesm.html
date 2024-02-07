@@ -10,10 +10,10 @@
 <div id="data"></div>
 <body>
 
-	<script src="https://cdn.jsdelivr.net/npm/webconnect@0.0.2/dist/umd/webconnect.js"></script>
-	<script>
+	
+	<script type="module">
+		import webconnect from 'https://cdn.jsdelivr.net/npm/webconnect@0.0.2/dist/esm/webconnect.js'
 		
-				
 				const w = webconnect({})
 				w.onConnect(async(data)=>{
 					console.log(data)
@@ -30,7 +30,6 @@
 				w.onReceive((data,connectId) =>{
 					console.log(data)
 				})
-		
 	</script>
 </body>
 
