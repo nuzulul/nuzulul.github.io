@@ -37,8 +37,9 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     summary: "{{year}}/{{month}}/{{day}} {{hour}}:{{minute}}:{{second}} -- {{title}}"
     fields: # The fields for each document, usually in front matter
-      - {label: "Layout", name: "layout", widget: "hidden", default: "post"}
+      - {label: "Layout", name: "layout", widget: "hidden", default: "project"}
       - {label: "Title", name: "title", widget: "string"}
+      - {label: "Link", name: "link", widget: "string"}
       - {label: "Category", name: "categories", widget: "list"}
       - {label: "Tag", name: "tags", widget: "list"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
@@ -63,9 +64,27 @@ collections:
   - label: "Page"
     name: "page"
     files:
+      - label: "Home"
+        name: "home"
+        file: "index.md"
+        fields:
+          - {label: "Layout", name: "layout", widget: "hidden", default: "page"}
+          - {label: Title, name: title, widget: string}
+          - {label: "Publish Date", name: "date", widget: "datetime"}
+          - {label: "Comments", name: "comments", widget: "boolean", default: true}
+          - {label: "Body", name: "body", widget: "markdown"}
       - label: "About"
         name: "about"
         file: "about.md"
+        fields:
+          - {label: "Layout", name: "layout", widget: "hidden", default: "page"}
+          - {label: Title, name: title, widget: string}
+          - {label: "Publish Date", name: "date", widget: "datetime"}
+          - {label: "Comments", name: "comments", widget: "boolean", default: true}
+          - {label: "Body", name: "body", widget: "markdown"}
+      - label: "Project"
+        name: "project"
+        file: "project.md"
         fields:
           - {label: "Layout", name: "layout", widget: "hidden", default: "page"}
           - {label: Title, name: title, widget: string}

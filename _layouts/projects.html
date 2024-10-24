@@ -4,16 +4,31 @@ layout: default
 
 <div class="home">
   {%- if page.title -%}
-    <h1 class="page-heading">{{ page.title }}</h1>
+  {% else %}
+    <h1 class="page-heading">Projects</h1>
   {%- endif -%}
 
   {{ content }}
 
   {%- if site.project.size > 0 -%}
-    <h2 class="post-list-heading">{{ page.list_title | default: "Project" }}</h2>
+    <h2 class="post-list-heading">{{ page.list_title | default: "Projects" }}</h2>
     <ul class="post-list">
-      {% assign thepost = site.project %}
-      {%- for post in thepost limit:1 -%}
+      {%- for post in site.project -%}
+      <li>
+        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        <span class="post-meta">{{ post.date | date: date_format }}</span>
+        <h3>
+          <a class="post-link" href="{{ post.url | relative_url }}">
+            {{ post.title | escape }}
+          </a>
+        </h3>
+        {%- if site.show_excerpts -%}
+          {{ post.content | markdownify | strip_html | truncatewords: 50 }}
+        {%- endif -%}
+      </li>
+      {%- endfor -%}
+      {% assign thepost = site.pages | where:"title","Siomdo TTS" %}
+      {%- for post in thepost -%}
       <li>
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
         <span class="post-meta">{{ post.date | date: date_format }}</span>
@@ -28,29 +43,6 @@ layout: default
       </li>
       {%- endfor -%}
     </ul>
-  {%- endif -%}
-
-
-  {%- if site.posts.size > 0 -%}
-    <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
-    <ul class="post-list">
-      {%- for post in site.posts -%}
-      <li>
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
-        <h3>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-        </h3>
-        {%- if site.show_excerpts -%}
-          {{ post.content | markdownify | strip_html | truncatewords: 50 }}
-        {%- endif -%}
-      </li>
-      {%- endfor -%}
-    </ul>
-
-    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
   {%- endif -%}
 
 </div>
