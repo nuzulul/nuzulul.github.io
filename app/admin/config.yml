@@ -29,5 +29,48 @@ collections:
       - {label: "Rating (scale of 1-5)", name: "rating", widget: "number" , required: false}
       - {label: "Comments", name: "comments", widget: "boolean", default: true}
       - {label: "Body", name: "body", widget: "markdown"}
+  - name: "project"
+    label: "Project"
+    folder: "_project"
+    create: true
+    sort: "date:desc"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{year}}/{{month}}/{{day}} {{hour}}:{{minute}}:{{second}} -- {{title}}"
+    fields: # The fields for each document, usually in front matter
+      - {label: "Layout", name: "layout", widget: "hidden", default: "post"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Category", name: "categories", widget: "list"}
+      - {label: "Tag", name: "tags", widget: "list"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Modified Date", name: "modified", widget: "datetime"}
+      - {label: "Featured Image", name: "thumbnail", widget: "image" , required: false}
+      - {label: "Rating (scale of 1-5)", name: "rating", widget: "number" , required: false}
+      - {label: "Comments", name: "comments", widget: "boolean", default: true}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "menu"
+    label: "Menu"
+    folder: "_menu"
+    create: true
+    sort: "date:desc"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{year}}/{{month}}/{{day}} {{hour}}:{{minute}}:{{second}} -- {{title}}"
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "page"}
+      - {label: Title, name: title, widget: string}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Comments", name: "comments", widget: "boolean", default: true}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - label: "Page"
+    name: "page"
+    files:
+      - label: "About"
+        name: "about"
+        file: "about.md"
+        fields:
+          - {label: "Layout", name: "layout", widget: "hidden", default: "page"}
+          - {label: Title, name: title, widget: string}
+          - {label: "Publish Date", name: "date", widget: "datetime"}
+          - {label: "Comments", name: "comments", widget: "boolean", default: true}
+          - {label: "Body", name: "body", widget: "markdown"}
 site_url: https://nuzulul.github.io/
 display_url: https://nuzulul.github.io/

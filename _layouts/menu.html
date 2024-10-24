@@ -1,0 +1,35 @@
+---
+layout: default
+---
+
+<div class="home">
+  {%- if page.title -%}
+  {% else %}
+    <h1 class="page-heading">Menu</h1>
+  {%- endif -%}
+
+  {{ content }}
+
+  {%- if site.menu.size > 0 -%}
+    <h2 class="post-list-heading">{{ page.list_title | default: "Menu" }}</h2>
+    <ul class="post-list">
+      {%- for post in site.menu -%}
+      <li>
+        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        <span class="post-meta"></span>
+        <h3>
+          <a class="post-link" href="{{ post.url | relative_url }}">
+            {{ post.title | escape }}
+          </a>
+        </h3>
+        {%- if site.show_excerpts -%}
+          {{ post.content | markdownify | strip_html | truncatewords: 50 }}
+        {%- endif -%}
+      </li>
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+
+
+
+</div>

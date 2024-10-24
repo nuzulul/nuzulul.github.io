@@ -36,13 +36,22 @@ plugins:
   - jekyll-seo-tag
 header_pages:
   - about.md
-  - siomdo.md
+  - project.md
+  - menu.md
+collections:
+  project:
+    output: true
+    permalink: /:title/
+  menu:
+    output: true
+    permalink: /:title/
 minima:
   date_format: "%-d %b %Y"
 disqus:
   shortname: nuzulul
 show_excerpts: true
 google_analytics: UA-150387960-1
+page_excerpts: true
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
