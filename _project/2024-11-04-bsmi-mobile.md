@@ -21,9 +21,10 @@ tags:
   - erupsi
   - cuaca
   - tsunami
-date: 2024-11-04T11:16:10.852Z
+date: 2018-08-03T11:16:10.852Z
 modified: 2024-11-04T11:16:10.871Z
 thumbnail: /uploads/screenshot-1730123684.png
+rating: 6
 comments: true
 ---
 
