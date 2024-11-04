@@ -37,6 +37,7 @@ plugins:
 header_pages:
   - about.md
   - projects.md
+  - posts.md
   - menu.md
 collections:
   project:

@@ -7,7 +7,8 @@ backend:
   gateway_url:  "https://nuzulul.netlify.app/.netlify/git"
   base_url: "https://nuzulul.netlify.app"
 # This line should *not* be indented
-publish_mode: editorial_workflow
+#publish_mode: editorial_workflow
+publish_mode: simple
 # This line should *not* be indented
 media_folder: "uploads" # Media files will be stored in the repo under images/uploads
 collections:
@@ -39,9 +40,11 @@ collections:
     fields: # The fields for each document, usually in front matter
       - {label: "Layout", name: "layout", widget: "hidden", default: "project"}
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Link", name: "link", widget: "string"}
-      - {label: "Category", name: "categories", widget: "list"}
-      - {label: "Tag", name: "tags", widget: "list"}
+      - {label: "Description", name: "description", widget: "text",required: false}
+      - {label: "Source", name: "source", widget: "string",required: false}
+      - {label: "Link", name: "link", widget: "string",required: false}
+      - {label: "Category", name: "categories", widget: "list",required: false}
+      - {label: "Tag", name: "tags", widget: "list",required: false}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Modified Date", name: "modified", widget: "datetime"}
       - {label: "Featured Image", name: "thumbnail", widget: "image" , required: false}
