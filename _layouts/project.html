@@ -16,8 +16,9 @@ layout: default
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <div class="website"><span>Available at : </span>{%- if page.link -%}<a href="{{ page.link }}">{{ page.link }}</a>{%- endif -%}</br></br></div>
+    {%- if page.link -%}<div class="website"><span>Available at : </span><a href="{{ page.link }}">{{ page.link }}</a></br></br></div>{%- endif -%}
     {{ content }}
+	{%- if page.thumbnail -%}<div class="thumbnail"><img src="{{ page.thumbnail }}"></div>{%- endif -%}
   </div>
 
   <!--
