@@ -41,6 +41,9 @@ collections:
       - {label: "Layout", name: "layout", widget: "hidden", default: "project"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Description", name: "description", widget: "text",required: false}
+      - {label: "Type", name: "type", widget: "list"}
+      - {label: "Stack", name: "stack", widget: "list"}
+      - {label: "Status", name: "status", widget: "string"}
       - {label: "Source", name: "source", widget: "string",required: false}
       - {label: "Link", name: "link", widget: "string",required: false}
       - {label: "Category", name: "categories", widget: "list",required: false}

@@ -21,11 +21,12 @@ description: >- # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://nuzulul.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username: _nuzulul_
-github_username:  nuzulul
+#github_username:  nuzulul
+github: https://github.com/nuzulul
 #instagram_username: nuzululzulkarnain
 #facebook_username: nuzululzulkarnain
 #youtube_username: nuzululzulkarnain
-nostr: https://nuzulul.npub.pro/
+nostr: https://nuzulul.npub.pro
 
 # Build settings
 markdown: kramdown
