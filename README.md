@@ -1,4 +1,2 @@
 # nuzulul.github.io
-Nuzulul
-
-Site
+Welcome to Nuzulul Zulkarnain
