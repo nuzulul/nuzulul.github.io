@@ -27,6 +27,8 @@ github: https://github.com/nuzulul
 #facebook_username: nuzululzulkarnain
 #youtube_username: nuzululzulkarnain
 nostr: https://nuzulul.npub.pro
+googleplay: https://play.google.com/store/apps/dev?id=6308264906562215540
+microsoftstore : https://apps.microsoft.com/search/publisher?name=Narojil+Studio
 
 # Build settings
 markdown: kramdown
