@@ -13,10 +13,10 @@ layout: default
   {{ content }}
 
   {%- if site.project.size > 0 -%}
-    <h2 class="post-list-heading">{{ page.list_title | default: "Recent Projects" }}<a href="/projects/" style="font-size:0.5em"> (All)</a></h2>
+    <h2 class="post-list-heading">{{ page.list_title | default: "Projects" }}</h2>
     <ul class="post-list">
       {% assign thepost = site.project | reverse %}
-      {%- for post in thepost limit:2 -%}
+      {%- for post in thepost limit:1 -%}
       <li>
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
         <span class="post-meta">{{ post.date | date: date_format }}</span>
@@ -31,13 +31,15 @@ layout: default
       </li>
       {%- endfor -%}
     </ul>
+    <a href="/projects/" style="font-size:1em;margin-bottom:"> (More)</a>
+    </br></br>
   {%- endif -%}
 
 
   {%- if site.posts.size > 0 -%}
-    <h2 class="post-list-heading">{{ page.list_title | default: "Recent Posts" }}<a href="/posts/" style="font-size:0.5em"> (All)</a></h2>
+    <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
     <ul class="post-list">
-      {%- for post in site.posts limit:3 -%}
+      {%- for post in site.posts limit:5 -%}
       <li>
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
         <span class="post-meta">{{ post.date | date: date_format }}</span>
@@ -52,8 +54,10 @@ layout: default
       </li>
       {%- endfor -%}
     </ul>
+    
+    <a href="/posts/" style="font-size:1em"> (More)</a>
 
-    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
+    <p class="rss-subscribe" style="display:none"><a href="{{ "/feed.xml" | relative_url }}">(RSS)</a></p>
   {%- endif -%}
 
 </div>
