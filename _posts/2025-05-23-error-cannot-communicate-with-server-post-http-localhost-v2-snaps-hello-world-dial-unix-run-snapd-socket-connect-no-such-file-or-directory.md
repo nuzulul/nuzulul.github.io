@@ -13,13 +13,13 @@ date: 2025-05-23T08:23:20.912Z
 modified: 2025-05-23T08:23:20.923Z
 comments: true
 ---
-kdi wsl windows ketika mau install snap contohnya hello-word dengan perintah:
+di wsl windows ketika mau install snap contohnya hello-word dengan perintah:
 
-snap install hello-world
+**snap install hello-world**
 
 a﻿kan muncul error :
 
-error: cannot communicate with server: Post "http://localhost/v2/snaps/hello-world": dial unix /run/snapd.socket: connect: no such file or directory
+**error: cannot communicate with server: Post "http://localhost/v2/snaps/hello-world": dial unix /run/snapd.socket: connect: no such file or directory**
 
 s﻿olusinya:
 
