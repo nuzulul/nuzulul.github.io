@@ -49,4 +49,4 @@ padahal jika diperiksa production nya dengan perintah **npm audit --production**
 
 `found 0 vulnerabilities`
 
-seharusnya npm audit tidak menyertakan devDependencies karena bisa memicu laporan celah keamanan yang sebenarnya tidak real dan meresahkan end user.
+seharusnya npm audit tidak menyertakan devDependencies karena bisa memicu laporan celah keamanan yang sebenarnya tidak real dan cukup mengganggu, bagaimana pendapat rekan rekan?
