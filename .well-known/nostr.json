@@ -2,7 +2,7 @@
   "names": {
     "_": "ea48b728f5d6f91b4e6f627cff63d926effd52e41741d07b924c42ccd03290f7",
     "nuzulul": "ea48b728f5d6f91b4e6f627cff63d926effd52e41741d07b924c42ccd03290f7",
-    "nostr": "ea48b728f5d6f91b4e6f627cff63d926effd52e41741d07b924c42ccd03290f7",
+    "nostr": "ea48b728f5d6f91b4e6f627cff63d926effd52e41741d07b924c42ccd03290f7"
   },
   "relays": {
     "ea48b728f5d6f91b4e6f627cff63d926effd52e41741d07b924c42ccd03290f7": [ "wss://nostr.mom", "wss://relay.damus.io", "wss://nos.lol", "wss://relay.primal.net" ]
