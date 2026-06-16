@@ -19,5 +19,6 @@ modified: 2024-11-04T11:26:05.335Z
 thumbnail: /uploads/screenshot-1730262317.png
 rating: 5
 comments: true
+draft: true
 ---
 A﻿plikasi BSMIRADIO adalah aplikasi komunikasi audio dua arah yang berfungsi seperti perangkat walkie talkie klasik. Pengguna dapat memilih untuk bergabung pada channel yang tersedia yaitu channel 10 s/d 99. Aplikasi ini dapat dimanfaatkan untuk berbagai keperluan mulai dari hal sederhana sekedar obrolan antar pengguna hingga untuk keperluan formal seperti koordinasi event organizer , komunikasi kebencanaan dan lain sebagainya.
