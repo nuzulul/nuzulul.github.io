@@ -22,7 +22,7 @@ date: 2026-06-16T01:01:09.174Z
 modified: 2026-06-16T01:01:09.181Z
 rating: 5
 comments: true
-draft: false
+draft: true
 ---
 T﻿elegram-scraper adalah pustaka nodejs untuk mengekstrak data dari chanel telegram dan mengubahnya menjadi format JSON yang terstruktur. 
 
