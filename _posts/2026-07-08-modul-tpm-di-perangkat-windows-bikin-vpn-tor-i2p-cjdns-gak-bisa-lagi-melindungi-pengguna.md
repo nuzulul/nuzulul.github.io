@@ -20,6 +20,8 @@ ketika windows 11 diluncurkan yang mensyaratkan modul tpm pengguna windows digra
 
 sebenarnya dari microsoft sendiri menjelasakan keberadaan modul tpm ini untuk perlindungan keamanan di level perangkat yaitu untuk menyimpan kunci bitlocker dan windows hello
 
-namun ada hal tidak diungkapkan dan tidak banyak diketahui orang hingga baru baru ini kalau modul tpm memliki nomor identifikasi global yang digunakan oleh microsoft untuk mengidentifikasi setiap perangkat bahkan ngerinya nomor ini bisa bertahan dari installasi windows baru maupun reinstall
+namun ada hal tidak diungkapkan dan tidak banyak diketahui orang hingga baru baru ini kalau modul tpm memliki nomor identifikasi kriptografi permanen yang digunakan oleh microsoft untuk mengidentifikasi setiap perangkat bahkan ngerinya nomor ini bisa bertahan dari installasi windows baru maupun reinstall terkonfirmasi sendiri di API Windows untuk TPM EKPub ( NCRYPT_PCP_EKPUB_PROPERTY )
 
-praktis bisa dibilang sejak era tpm 2016 sebenarnya teknologi masking ip address seperti vpn, tor, i2p, cjdns dll tidak berguna lagi melindungi privasi pengguna windows karena microsoft memliki pelacak dilevel perangkat tanpa perlu mengetahui ip address sesungguhnya
+praktis bisa dibilang sejak era tpm 2016 sebenarnya teknologi masking ip address seperti vpn, tor, i2p, cjdns dll tidak berguna lagi melindungi privasi pengguna windows karena microsoft memliki pelacak dilevel perangkat ini tanpa perlu mengorek ip address asli pengguna
+
+satu satunya cara menghindar dari pelacakan ini tentu saja harus mengganti perangkat tpm dan motherboardnya, menggunakan vpn tor i2p cjdns saja tidak cukup
