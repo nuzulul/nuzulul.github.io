@@ -25,8 +25,4 @@ echo hello ^| world
 pause
 ```
 
-The ^ is necessary because batch scripts treat | like pipes regardless of context
-
-`@echo off
-echo hello ^| world
-pause`
+The `^` is necessary because batch scripts treat `|` like pipes regardless of context
