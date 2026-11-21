@@ -1,0 +1,12 @@
+{%- if page.comments != false and jekyll.environment == "production" -%}
+
+  
+  {%- if site.disqus.shortname -%}
+    {%- include disqus_comments.html -%}
+  {%- endif -%}
+  
+  <!--
+  {%- include giscus.html -%}
+  -->
+  
+{%- endif -%}
